@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Header.css';
-import Logo from './Logo';
+import Logo from './Logo'; 
 import Navbar from './Navbar';
 
 export default class Header extends Component{
@@ -10,8 +10,8 @@ export default class Header extends Component{
     render(){
         return(
             <div className="header">
-                <Logo/>
-                <Navbar userName={this.props.userName} toggleMenu={this.toggleMenu}/>
+                <Logo showMenu={this.props.showMenu}/>
+                <Navbar userName={this.props.userName} toggleMenu={this.props.toggleMenu}/>
             </div>
         );
     }

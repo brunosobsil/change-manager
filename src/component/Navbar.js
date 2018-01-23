@@ -4,16 +4,13 @@ import '../css/Navbar.css';
 export default class Navbar extends Component{
 
     constructor(props){
-        super(props);
-        this.state = {
-            showMenu : true
-        }        
+        super(props);        
     }
 
     render(){
         return(
             <div className="navbar">
-                <div className="menu-toggle"></div>
+                <div className="menu-toggle" onClick={this.props.toggleMenu}></div>
                 <div className="logo-company"></div>
                 <div className="userProfile">
                     <div className="avatar" onClick={() => alert('clicou')}></div>

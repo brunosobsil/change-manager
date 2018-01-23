@@ -4,10 +4,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: 0.3s;
 }
 
 .logo-img{
     background-image: url('../image/logo.png');
-    width: 187px;
+    width: 180px;
     height: 34px;
+    margin-left: 0.25em;
+}
+
+.logo-closed{
+    width: 50px;
+    background-color: #f27324;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.3s;    
 }

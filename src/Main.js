@@ -27,8 +27,8 @@ export default class Main extends Component {
   render() {
     return (
       <div className="container">  
-        <Header userName={this.state.userName} toggleMenu={this.toggleMenu}/>
-        <Body/>
+        <Header userName={this.state.userName} toggleMenu={this.toggleMenu} showMenu={this.state.showMenu}/>
+        <Body showMenu={this.state.showMenu}/>
       </div>
     );
   }

@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import '../css/SideMenu.css';
 
 export default class SideMenu extends Component{
+
+    constructor(props){
+        super(props);
+    }
+
     render(){
         return(
-            <div className="side-menu"></div>
+            <div className={this.props.showMenu ? 'side-menu' : 'side-menu-closed'}></div>
         );
     }
 }
