@@ -1,0 +1,13 @@
+.logo{
+    background-color: #f27324;
+    width: 200px;      
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img{
+    background-image: url('../image/logo.png');
+    width: 187px;
+    height: 34px;
+}

@@ -1,0 +1,57 @@
+.navbar{
+    background-color: white;    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 8
+}
+
+.menu-toggle{
+    display: flex;
+    width: 50px;
+    height: 22px;
+    background-image: url('../image/menu-toggle-icon.png');    
+}
+
+.menu-toggle:hover{    
+    background-image: url('../image/menu-toggle-icon-hover.png');    
+}
+
+.logo-company{
+    display: flex;
+    width: 157px;
+    height: 35px;
+    background-image: url('../image/logo-qgep-nav.png');
+}
+
+.userProfile{
+    flex-direction: row;
+    display: flex;    
+    width: auto;
+    align-items: center;    
+}
+
+.avatar{
+    background-image: url('../image/sem-foto.png');    
+    border-radius: 50em;
+    width: 45px;
+    height: 47px;
+    margin-right: 10px;
+}
+
+.userProfile:hover > .avatar{
+    box-shadow:  2px 2px 2px grey;
+}
+
+.userProfile:hover > .userName{
+    color: #f27324;    
+}
+
+.userName{    
+    color: #ccc;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
