@@ -3,7 +3,7 @@ import '../css/Content.css';
 
 export default class Content extends Component{
     render(){
-        return(
+        return(            
             <div className="content"></div>            
         );
     }
