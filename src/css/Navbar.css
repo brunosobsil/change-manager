@@ -3,7 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 8;    
+    flex: 8;
+    min-width: 567px;    
 }
 
 .menu-toggle{

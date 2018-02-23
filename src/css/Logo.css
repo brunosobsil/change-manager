@@ -3,8 +3,9 @@
     width: 200px;      
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition-duration: 0.3s;    
+    justify-content: center;    
+    min-width: 200px;    
+    transition-duration: 0.3s;
 }
 
 .logo-img{

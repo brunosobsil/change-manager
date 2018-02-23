@@ -1,8 +1,8 @@
-.container, #root, html, body {
+.container-geral, #root, html, body {
     height: 100%;
-    margin: 0;
+    margin: 0;    
 }
-.container {
+.container-geral {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
 }
