@@ -19,7 +19,7 @@ export default class SideMenu extends Component{
         return(
             <div className={this.props.showMenu ? 'side-menu' : 'side-menu-closed'}>
                 {                     
-                    this.state.menu.map( (itemMenu) => <ItemMenu menu={itemMenu} linkUrl={itemMenu[2]}/>)
+                    this.state.menu.map( (itemMenu, idx) => <ItemMenu key={idx} menu={itemMenu} linkUrl={itemMenu[2]}/>)
                 }
             </div>
         );
