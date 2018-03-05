@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import '../css/Content.css';
-import { Card, Button, CardHeader, CardBody, CardText, Table, Form, FormGroup, Label, Input, FormText, Col } from 'reactstrap';
+import * as actionCreators from '../actions/analistaActionCreators';
+import { Card, Button, CardHeader, CardBody, Table, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 
-export default class Analistas extends Component{
+class Analistas extends Component{
 
-    constructor(){
+    constructor(props){        
         
-        super();
+        super(props);
+
         this.onClickAdicionar = this.onClickAdicionar.bind(this);
         this.onChangeUsuario = this.onChangeUsuario.bind(this);
         this.onChangeNome = this.onChangeNome.bind(this);
@@ -18,47 +21,18 @@ export default class Analistas extends Component{
         this.limpaForm = this.limpaForm.bind(this);
 
         this.state = {
-            usuario : '',
-            nome : '',
-            email: '',
-            analistas: [
-                {
-                    usuario: 'bsobral.tech',
-                    nome: 'Bruno Sobral',
-                    email: 'bsobral.tech@qgep.com.br',
-                    selecionado: false
-                },
-                {
-                    usuario: 'lnunes.tech',
-                    nome: 'Leandro Nunes',
-                    email: 'lnunes.tech@qgep.com.br',
-                    selecionado: false
+            usuario: '',
+            nome: '',
+            email: ''                        
+        }
 
-                },
-                {
-                    usuario: 'fnicolau.korus',
-                    nome: 'Fernando Nicolau',
-                    email: 'fnicolau.korus@qgep.com.br',
-                    selecionado: false
-                }
-            ]
-        };
-
-
-    }    
+    }
 
     onSelectAnalista(e){
         
         const usuario = e.target.value;
-        let analistas = this.state.analistas.slice();
-
-        analistas.map((a, idx) =>{            
-            if(a.usuario === usuario){
-                analistas[idx].selecionado = !analistas[idx].selecionado;
-            }
-        });
-
-        this.setState({analistas});        
+        this.props.selectAnalista(usuario);
+        
     }
 
     renderAnalista(analista, indice){
@@ -90,7 +64,6 @@ export default class Analistas extends Component{
 
     onClickAdicionar(e){
         
-        let analistas = this.state.analistas.slice();
         let novoAnalista = {
             usuario: this.state.usuario,
             nome: this.state.nome,
@@ -98,10 +71,8 @@ export default class Analistas extends Component{
             selecionado: false
         };               
         
-        analistas.push(novoAnalista);
-        this.limpaForm();        
-
-        this.setState({analistas});
+        this.props.addAnalista(novoAnalista);
+        this.limpaForm();
     }
 
     checkDisable(){
@@ -158,7 +129,7 @@ export default class Analistas extends Component{
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.analistas.map(this.renderAnalista)}
+                                {this.props.analistas.map(this.renderAnalista)}
                             </tbody>
                         </Table> 
                     </CardBody>                
@@ -167,3 +138,22 @@ export default class Analistas extends Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {               
+    return {
+        analistas: state.analistas
+    }
+};
+
+const mapDispatchToProps = (dispatch, props) =>{
+    return {
+        addAnalista: (analista) =>{
+            dispatch(actionCreators.addAnalista(analista))
+        },
+        selectAnalista: (usuario) =>{
+            dispatch(actionCreators.selectAnalista(usuario))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Analistas);

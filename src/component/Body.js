@@ -7,11 +7,7 @@ import Clientes from './Clientes';
 import Janelas from './Janelas';
 import { Switch, Route } from 'react-router-dom'
 
-export default class Body extends Component{
-    
-    constructor(props){
-        super(props);
-    }    
+export default class Body extends Component{    
     
     render(){
         return(            

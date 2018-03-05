@@ -5,10 +5,6 @@ import 'font-awesome/css/font-awesome.css';
 
 export default class ItemMenu extends Component{
 
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return(
             <Link to={this.props.linkUrl}>
