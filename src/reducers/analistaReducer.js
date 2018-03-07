@@ -3,18 +3,32 @@ import initialState from './initialState';
 
 export default function analistaReducer(state = initialState.analistas, action) {  
     switch(action.type) {
-        case types.INCLUIR_ANALISTA:                        
+        case types.ADD_ANALISTA:                                    
+            const urlApi = 'https://5a9eed5f29d04a00142ff7d6.mockapi.io/analistas';
+            const header = {
+                method: 'post',
+                body: JSON.stringify(action.analista)
+            }
+
+            console.log(header);
+            
+            fetch( urlApi, header)
+                .then((res)=>{
+                    console.log(res);    
+                });
+            
             return [
                 ...state,
                 action.analista
             ];
-        case types.ALTERAR_ANALISTA:
+
+        case types.UPDATE_ANALISTA:
             // Todo
             return action.analistas;
-        case types.EXCLUIR_ANALISTA:
+        case types.DELETE_ANALISTA:
             // Todo
             return action.analistas;
-        case types.SELECIONAR_ANALISTA:
+        case types.SELECT_ANALISTA:
             let analistas = state;
             analistas.map((a,idx) =>{
                 if(a.usuario === action.usuario){
@@ -23,6 +37,8 @@ export default function analistaReducer(state = initialState.analistas, action) 
                 return a;
             });            
             return analistas;
+        case types.FETCH_ANALISTAS:
+            return action.analistas;
         default: 
             return state;
   }

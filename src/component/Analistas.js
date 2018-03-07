@@ -18,7 +18,7 @@ class Analistas extends Component{
         this.onSelectAnalista = this.onSelectAnalista.bind(this);
         this.renderAnalista = this.renderAnalista.bind(this);
         this.checkDisable = this.checkDisable.bind(this);
-        this.limpaForm = this.limpaForm.bind(this);
+        this.limpaForm = this.limpaForm.bind(this);        
 
         this.state = {
             usuario: '',
@@ -89,6 +89,20 @@ class Analistas extends Component{
         this.setState({email: ''});   
     }
 
+    async getAnalistas(){
+        
+        const urlApi = 'https://5a9eed5f29d04a00142ff7d6.mockapi.io/analistas';
+        const response = await fetch(urlApi);
+        const analistas = await response.json();
+
+        return analistas;
+    }
+
+    async componentWillMount(){                
+        const analistas = await this.getAnalistas();        
+        this.props.fetchAnalistas(analistas);
+    }
+
     render(){
         return(            
             <div className="content">
@@ -152,6 +166,9 @@ const mapDispatchToProps = (dispatch, props) =>{
         },
         selectAnalista: (usuario) =>{
             dispatch(actionCreators.selectAnalista(usuario))
+        },
+        fetchAnalistas: (analistas) =>{
+            dispatch(actionCreators.fetchAnalistas(analistas))
         }
     }
 }
