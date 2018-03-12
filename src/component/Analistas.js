@@ -11,7 +11,7 @@ class Analistas extends Component{
         
         super(props);
 
-        this.onClickAdicionar = this.onClickAdicionar.bind(this);
+        this.onClickASalvar = this.onClickSalvar.bind(this);
         this.onChangeUsuario = this.onChangeUsuario.bind(this);
         this.onChangeNome = this.onChangeNome.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -62,7 +62,7 @@ class Analistas extends Component{
         this.setState({email: e.target.value});
     }
 
-    onClickAdicionar(e){
+    onClickSalvar(e){
         
         let novoAnalista = {
             usuario: this.state.usuario,
@@ -128,7 +128,7 @@ class Analistas extends Component{
                                     <Input type="email" name="email" id="emailAnalista" value={this.state.email} onChange={(e) => this.onChangeEmail(e)}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <Button onClick={(e) => this.onClickAdicionar(e)} disabled={this.checkDisable()}>Adicionar</Button>
+                                    <Button onClick={(e) => this.onClickSalvar(e)} disabled={this.checkDisable()}>Salvar</Button>
                                 </Col>
 
                             </FormGroup>                            
