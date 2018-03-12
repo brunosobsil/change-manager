@@ -12,9 +12,9 @@ export default class Body extends Component{
     render(){
         return(            
             <div className="body">
-                <SideMenu showMenu={this.props.showMenu}/>
+                <SideMenu showMenu={this.props.showMenu}/>                                
                 <Switch>
-                    <Route exact path='/' component={Content}/>
+                    <Route path='/inicio' component={Content}/>
                     <Route path='/analistas' component={Analistas}/>
                     <Route path='/clientes' component={Clientes}/>
                     <Route path='/janelas' component={Janelas}/>

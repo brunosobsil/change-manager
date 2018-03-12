@@ -9,8 +9,8 @@ export default class Main extends Component {
     super();
     
     this.state = {
-      userName: 'Fulano da Silva',
-      showMenu: true
+      userName: '',
+      showMenu: true      
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -24,12 +24,12 @@ export default class Main extends Component {
     })
   }
 
-  render() {
-    return (
+  render() {    
+    return(
       <div className="container-geral">  
         <Header userName={this.state.userName} toggleMenu={this.toggleMenu} showMenu={this.state.showMenu}/>
         <Body showMenu={this.state.showMenu}/>
       </div>
-    );
+    );        
   }
 }
