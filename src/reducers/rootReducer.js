@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import analistas from './analistaReducer.js';
+import analistas from './analistaReducer';
+import login from './loginReducer'
 
 const rootReducer = combineReducers({
-    analistas
+    analistas,
+    login
 });
 
 export default rootReducer;

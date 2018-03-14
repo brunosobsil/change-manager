@@ -9,8 +9,6 @@ export default function analistaReducer(state = initialState.analistas, action) 
                 method: 'post',
                 body: JSON.stringify(action.analista)
             }
-
-            console.log(header);
             
             fetch( urlApi, header)
                 .then((res)=>{

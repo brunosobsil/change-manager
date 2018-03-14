@@ -3,3 +3,5 @@ export const UPDATE_ANALISTA = 'UPDATE_ANALISTA';
 export const DELETE_ANALISTA = 'DELETE_ANALISTA';
 export const FETCH_ANALISTAS = 'FETCH_ANALISTAS';
 export const SELECT_ANALISTA = 'SELECT_ANALISTA';
+export const DO_LOGIN        = 'DO_LOGIN';
+export const LOGIN_SUCCESS   = 'LOGIN_SUCCESS';

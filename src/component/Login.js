@@ -1,24 +1,39 @@
 import React, {Component} from 'react';
 import '../css/Login.css';
+import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 export default class Login extends Component{
+
     constructor(){
         super();
         this.state = {
-            usuario: '',
-            senha: ''
+            usuario: {
+                usuario: this.props.usuario.usuario,
+                senha: this.props.usuario.senha
+            }
         }
         this.onChangeUsuario = this.onChangeUsuario.bind(this);
         this.onChangeSenha   = this.onChangeSenha.bind(this);
     }
 
     onChangeUsuario(e){
-        this.setState({usuario: e.target.value});
+        const usuario = {
+            usuario: e.target.value            
+        }
+        this.setState({usuario});
     }
 
     onChangeSenha(e){
-        this.setState({senha: e.target.value});
+        const usuario = {
+            senha: e.target.value
+        }
+        this.setState(usuario);
+    }
+
+    login(){
+        e.preventDefault();
+        alert(console.log())
     }
 
     render(){
@@ -34,17 +49,17 @@ export default class Login extends Component{
                         <FormGroup row>
                             <Label for="usuario" sm={3}>Usu&aacute;rio</Label>
                             <Col sm={9}>
-                                <Input type="text" name="usuario" id="usuario" value={this.state.usuario} onChange={(e) => this.onChangeUsuario(e)} />
+                                <Input type="text" name="usuario" id="usuario" value={this.state.usuario.usuario} onChange={(e) => this.onChangeUsuario(e)} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="senha" sm={3}>Senha</Label>
                             <Col sm={9}>
-                                <Input type="password" name="senha" id="senha" value={this.state.senha} onChange={(e) => this.onChangeSenha(e)} />
+                                <Input type="password" name="senha" id="senha" value={this.state.usuario.senha} onChange={(e) => this.onChangeSenha(e)} />
                             </Col>
                         </FormGroup>
                         <div className="botoes">                            
-                             <Button block>Entrar</Button>
+                             <Button block onCLick={(e) => this.login(e)}>Entrar</Button>
                         </div>
                         
                     </Form>
@@ -57,3 +72,23 @@ export default class Login extends Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {               
+    return {
+        usuario: state.usuario,
+        senha: state.senha
+    }
+};
+
+const mapDispatchToProps = (dispatch, props) =>{
+    return {
+        doLogin: (usuario, senha) =>{
+            dispatch(actionCreators.doLogin(usuario,senha))
+        },
+        loginSuccess: (usuario, senha) =>{
+            dispatch(actionCreators.loginSuccess(usuario,senha))
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

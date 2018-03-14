@@ -1,3 +1,7 @@
 export default {    
-    analistas: []
+    analistas: [],
+    usuario: {
+        usuario: '',
+        senha: ''
+    }
 };
