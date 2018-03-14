@@ -10,7 +10,8 @@
     width: 350px;
     height: 400px;   
     box-shadow: 5px 5px 5px grey;
-    border-radius: 20px;        
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .text-center{

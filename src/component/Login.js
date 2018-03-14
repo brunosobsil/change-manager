@@ -9,6 +9,16 @@ export default class Login extends Component{
             usuario: '',
             senha: ''
         }
+        this.onChangeUsuario = this.onChangeUsuario.bind(this);
+        this.onChangeSenha   = this.onChangeSenha.bind(this);
+    }
+
+    onChangeUsuario(e){
+        this.setState({usuario: e.target.value});
+    }
+
+    onChangeSenha(e){
+        this.setState({senha: e.target.value});
     }
 
     render(){
@@ -24,13 +34,13 @@ export default class Login extends Component{
                         <FormGroup row>
                             <Label for="usuario" sm={3}>Usu&aacute;rio</Label>
                             <Col sm={9}>
-                                <Input type="text" name="usuario" id="usuario" value={this.state.usuario} />
+                                <Input type="text" name="usuario" id="usuario" value={this.state.usuario} onChange={(e) => this.onChangeUsuario(e)} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="senha" sm={3}>Senha</Label>
                             <Col sm={9}>
-                                <Input type="password" name="senha" id="senha" value={this.state.usuario} />
+                                <Input type="password" name="senha" id="senha" value={this.state.senha} onChange={(e) => this.onChangeSenha(e)} />
                             </Col>
                         </FormGroup>
                         <div className="botoes">                            
