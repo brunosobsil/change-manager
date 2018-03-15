@@ -1,50 +1,73 @@
 import React, {Component} from 'react';
 import '../css/Login.css';
+import * as actionCreators from '../actions/loginActionCreators';
 import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { withRouter } from 'react-router-dom'
 
-export default class Login extends Component{
+class Login extends Component{
 
-    constructor(){
-        super();
-        this.state = {
-            usuario: {
-                usuario: this.props.usuario.usuario,
-                senha: this.props.usuario.senha
-            }
-        }
+    constructor(props){
+        
+        super(props);               
         this.onChangeUsuario = this.onChangeUsuario.bind(this);
         this.onChangeSenha   = this.onChangeSenha.bind(this);
+        this.onLogin = this.onLogin.bind(this);
+
+        this.state = {
+            usuario: {
+                usuario: '',
+                senha: ''
+            },
+            logado: false,
+            erro: false,
+            mensagem: ''           
+        }
+        
     }
 
     onChangeUsuario(e){
         const usuario = {
-            usuario: e.target.value            
+            usuario: e.target.value,
+            senha: this.state.usuario.senha            
         }
         this.setState({usuario});
     }
 
     onChangeSenha(e){
         const usuario = {
+            usuario: this.state.usuario.usuario,
             senha: e.target.value
         }
-        this.setState(usuario);
+        this.setState({usuario});
     }
 
-    login(){
+    onLogin(e){
         e.preventDefault();
-        alert(console.log())
+        this.props.doLogin(this.state.usuario);
+    }
+
+    componentWillReceiveProps(props){
+        
+        if(props.logado){
+            localStorage.setItem('token', props.usuario.token);
+            this.props.history.push('/inicio');
+        }
+        
+        if(props.erro){
+            alert(props.mensagem.message);
+        }
     }
 
     render(){
         return(
-            <div className="container-geral">
-                <div className="box">
-                    <div className="header">
+            <div className="login-container-geral">
+                <div className="login-box">
+                    <div className="login-header">
                         <h4>Change Manager</h4>
                     </div>
-                    <h4 className="text-center">Login</h4>                    
-                    <div className="form-body">
+                    <h4 className="login-text-center">Login</h4>                    
+                    <div className="login-form-body">
                     <Form>
                         <FormGroup row>
                             <Label for="usuario" sm={3}>Usu&aacute;rio</Label>
@@ -52,43 +75,46 @@ export default class Login extends Component{
                                 <Input type="text" name="usuario" id="usuario" value={this.state.usuario.usuario} onChange={(e) => this.onChangeUsuario(e)} />
                             </Col>
                         </FormGroup>
+
                         <FormGroup row>
                             <Label for="senha" sm={3}>Senha</Label>
                             <Col sm={9}>
                                 <Input type="password" name="senha" id="senha" value={this.state.usuario.senha} onChange={(e) => this.onChangeSenha(e)} />
                             </Col>
-                        </FormGroup>
-                        <div className="botoes">                            
-                             <Button block onCLick={(e) => this.login(e)}>Entrar</Button>
+                        </FormGroup>                        
+                        
+                        <div className="login-botoes">                            
+                             <Button block onClick={(e) => this.onLogin(e)}>Entrar</Button>
                         </div>
                         
-                    </Form>
+                    </Form>                    
                     </div>
-                    <div className="footer">
-                        <div className="logo"></div>                    
+                    <div className="login-footer">
+                        <div className="login-logo"></div>                    
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
 
-const mapStateToProps = (state) => {               
+const mapStateToProps = (state) => {                   
+    console.log(state);
     return {
-        usuario: state.usuario,
-        senha: state.senha
+        usuario: state.login.usuario,
+        logado: state.login.logado,
+        erro: state.login.erro,    
+        mensagem: state.login.mensagem || ''
     }
 };
 
 const mapDispatchToProps = (dispatch, props) =>{
     return {
-        doLogin: (usuario, senha) =>{
-            dispatch(actionCreators.doLogin(usuario,senha))
-        },
-        loginSuccess: (usuario, senha) =>{
-            dispatch(actionCreators.loginSuccess(usuario,senha))
-        },
+        doLogin: (usuario) =>{
+            dispatch(actionCreators.doLogin(usuario))
+        }        
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

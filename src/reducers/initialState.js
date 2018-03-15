@@ -2,6 +2,8 @@ export default {
     analistas: [],
     usuario: {
         usuario: '',
-        senha: ''
-    }
+        senha: '',
+        token: ''
+    },
+    logado: false
 };

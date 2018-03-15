@@ -1,11 +1,13 @@
-.container-geral, #root, html, body {
+.login-container-geral {
     height: 100%;
     margin: 0;    
     background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.box{
-    margin: auto;
+.login-box{        
     background-color: #fff;
     width: 350px;
     height: 400px;   
@@ -14,11 +16,11 @@
     border-top-right-radius: 20px;
 }
 
-.text-center{
+.login-text-center{
     text-align: center;
 }
 
-.header{
+.login-header{
     background-color: #f27324;
     width: auto;
     height: 60px;
@@ -32,7 +34,7 @@
     
 }
 
-.form-body{
+.login-form-body{
     width:auto;
     height:200px;
     padding-top: 20px;
@@ -40,11 +42,11 @@
     padding-right: 20px;
 }
 
-.botoes{
+.login-botoes{
     padding-top: 20px;
 }
 
-.footer{
+.login-footer{
     width: auto;
     height: 45px;
     background-color: #fff;
@@ -53,7 +55,7 @@
     border-bottom-right-radius: 20px;
 }
 
-.logo{
+.login-logo{
     background-image: url('../image/logo-qgep-nav.png');
     width: 157px;
     height: 35px;

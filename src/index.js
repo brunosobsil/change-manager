@@ -25,7 +25,7 @@ function verificaAutenticacao(){
         ) : (
             <Redirect to="/"/>
         )
-    )
+    )    
 }
 
 ReactDOM.render(

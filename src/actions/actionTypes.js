@@ -5,3 +5,4 @@ export const FETCH_ANALISTAS = 'FETCH_ANALISTAS';
 export const SELECT_ANALISTA = 'SELECT_ANALISTA';
 export const DO_LOGIN        = 'DO_LOGIN';
 export const LOGIN_SUCCESS   = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR     = 'LOGIN_ERROR';
